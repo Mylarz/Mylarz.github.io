@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Mylarz – Portfolio</title>
+<meta name="description" content="Mylarz – apps, tools and projects.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#fbf4f8; --surface:#ffffff; --ink:#2a1a2b; --muted:#6e5470; --line:#ecd8e5; --accent:#a24f86; --accent-ink:#ffffff;
+  box-sizing:border-box;
+  padding-top:env(safe-area-inset-top,0px);
+  padding-bottom:env(safe-area-inset-bottom,0px);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){--bg:#1d121c; --surface:#2a1c2b; --ink:#f6e8f1; --muted:#bfa3b8; --line:#3d2b3e; --accent:#e1a0c2; --accent-ink:#1d121c; color-scheme:dark}
+}
+:root[data-theme="dark"]{--bg:#1d121c; --surface:#2a1c2b; --ink:#f6e8f1; --muted:#bfa3b8; --line:#3d2b3e; --accent:#e1a0c2; --accent-ink:#1d121c; color-scheme:dark}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:"Manrope",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;line-height:1.65;font-size:17px;-webkit-font-smoothing:antialiased}
+.wrap{max-width:900px;margin:0 auto;padding:0 24px}
+nav{display:flex;justify-content:space-between;align-items:center;padding:28px 0}
+nav b{font-weight:800;letter-spacing:-.01em}
+nav div{display:flex;gap:22px}
+a{color:inherit}
+nav a{text-decoration:none;color:var(--muted);font-size:15px;font-weight:500}
+@media (hover:hover){nav a:hover{color:var(--ink)}}
+nav a{-webkit-tap-highlight-color:transparent}
+a:focus-visible{outline:2px solid var(--accent);outline-offset:3px;border-radius:4px}
+header.hero{padding:64px 0 56px;display:flex;flex-direction:column-reverse;gap:32px;align-items:flex-start;text-align:left}
+.hero-text{flex:1;min-width:0}
+.pfp{width:150px;height:150px;border-radius:32px;object-fit:cover;flex:none;box-shadow:0 18px 40px -18px var(--accent)}
+@media (min-width:640px){header.hero{flex-direction:row;align-items:center;gap:56px}.pfp{width:240px;height:240px;border-radius:44px}}
+h1{font-size:clamp(40px,9vw,72px);line-height:1.04;letter-spacing:-.035em;font-weight:800;margin:0 0 22px}
+.lead{font-size:clamp(18px,3.2vw,22px);color:var(--muted);max-width:34em;margin:0 0 32px}
+.btns{display:flex;flex-wrap:wrap;gap:12px}
+.btn{display:inline-block;padding:12px 22px;border-radius:999px;font-weight:700;font-size:15px;text-decoration:none;border:1.5px solid var(--ink)}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+@media (hover:hover){.btn:hover{transform:translateY(-1px)}}
+button.btn{font:inherit;font-weight:700;font-size:15px;background:transparent;color:inherit;cursor:pointer}
+.note{margin:14px 0 0;font-size:14px;color:var(--muted);min-height:1.4em}
+section{padding:56px 0;border-top:1px solid var(--line)}
+h2{font-size:15px;font-weight:700;color:var(--muted);margin:0 0 28px;letter-spacing:.01em}
+.about p{margin:0 0 16px;max-width:36em}
+.facts{display:grid;grid-template-columns:repeat(auto-fit,minmax(180px,1fr));gap:20px;margin-top:32px}
+.facts div{padding-left:14px;border-left:3px solid var(--accent)}
+.facts small{display:block;color:var(--muted);font-size:14px}
+.facts span{font-weight:700}
+.proj{padding:26px 0;border-bottom:1px solid var(--line)}
+.proj:first-of-type{padding-top:0}
+.hire-box{padding:32px;border-radius:28px;background:var(--surface);border:1px solid var(--line)}
+.hire-box h3{margin:0 0 10px;font-size:28px;letter-spacing:-.02em}
+.hire-box p{margin:0 0 20px;color:var(--muted);max-width:34em}
+.hire-box ul{margin:0 0 24px;padding-left:20px}
+.hire-box li{margin-bottom:4px}
+.proj h3{margin:0 0 6px;font-size:24px;letter-spacing:-.02em;transition:color .15s}
+.proj .go{display:inline-block;margin-top:14px;font-size:15px;font-weight:700;color:var(--accent)}
+@media (hover:hover){.proj .go:hover{text-decoration:underline;text-underline-offset:4px}}
+.proj .soon{display:inline-block;margin-top:14px;font-size:15px;font-weight:500;color:var(--muted)}
+.proj p{margin:0 0 14px;color:var(--muted);max-width:36em}
+.tags{display:flex;flex-wrap:wrap;gap:8px}
+.tag{font-size:13px;font-weight:500;padding:3px 12px;border-radius:999px;background:var(--surface);border:1px solid var(--line)}
+.chips{display:flex;flex-wrap:wrap;gap:10px}
+.chip{padding:10px 18px;border-radius:14px;background:var(--surface);border:1px solid var(--line);font-weight:500}
+.contact p{margin:0 0 20px;color:var(--muted)}
+.links{display:flex;flex-wrap:wrap;gap:12px 28px;font-weight:700}
+footer{padding:40px 0 56px;color:var(--muted);font-size:14px;border-top:1px solid var(--line)}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}.btn:hover{transform:none}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <nav>
+    <b>Mylarz</b>
+    <div><a href="#about">About</a><a href="#projects">Projects</a><a href="#interests">Interests</a><a href="#hire">Hire me</a></div>
+  </nav>
+
+  <header class="hero">
+    <div class="hero-text">
+    <h1>I build apps and tools.</h1>
+    <p class="lead">Hi, I’m Mylarz. I make Android apps, desktop clients and voice assistants, and I like building things that are actually useful.</p>
+    <div class="btns">
+      <a class="btn primary" href="#projects">See my projects</a>
+      <a class="btn" href="#hire">Hire me</a>
+    </div>
+    </div>
+    <img class="pfp" alt="Profile picture" src="https://github.com/Mylarz.png?size=480">
+  </header>
+
+  <section id="about" class="about">
+    <h2>About</h2>
+    <p>On my way to becoming a great programmer. I’m always learning by building, and I’m working on a few projects at the same time.</p>
+    <div class="facts">
+      <div><small>What I do</small><span>Apps &amp; tools</span></div>
+      <div><small>Based in</small><span>Germany</span></div>
+      <div><small>Currently</small><span>Building side projects</span></div>
+    </div>
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <article class="proj">
+      <h3>Sage Client</h3>
+      <p>A desktop Minecraft launcher and client, formerly Blossom Client. Manage Fabric, Forge and vanilla instances, sign in with your Microsoft account, and play with built-in tools like a free camera, CPS and combo counters, fullbright, a keystrokes HUD and an FPS display.</p>
+      <div class="tags"><span class="tag">Minecraft</span><span class="tag">Desktop</span><span class="tag">Rust</span><span class="tag">TypeScript</span></div>
+      <a class="go" href="https://github.com/Mylarz/blossom-client-releases">Download from GitHub</a>
+    </article>
+    <article class="proj">
+      <h3>Capri Assistant</h3>
+      <p>A personal voice assistant for Android that runs locally, is free to use and wakes on a custom wake word, with an optional custom voice.</p>
+      <div class="tags"><span class="tag">Android</span><span class="tag">Voice</span><span class="tag">Wake word</span></div>
+      <span class="soon">Coming soon</span>
+    </article>
+    <article class="proj">
+      <h3>Encore</h3>
+      <p>My own music player, in the works. Offline-first, built around your local files, with karaoke-style synced lyrics built in from day one.</p>
+      <div class="tags"><span class="tag">Android</span><span class="tag">Music</span><span class="tag">Planned</span></div>
+      <span class="soon">Coming soon</span>
+    </article>
+  </section>
+
+  <section id="interests">
+    <h2>Interests</h2>
+    <div class="chips">
+      <span class="chip">Minecraft</span>
+      <span class="chip">Android modding</span>
+      <span class="chip">Music apps</span>
+      <span class="chip">Voice assistants</span>
+      <span class="chip">Building things</span>
+    </div>
+  </section>
+
+  <section id="hire">
+    <h2>Hire me</h2>
+    <div class="hire-box">
+      <h3>Got something you want built?</h3>
+      <p>I’m open to small projects and collabs. Tell me what you need and I’ll get back to you.</p>
+      <ul>
+        <li>Android apps and mods</li>
+        <li>Custom tools and clients</li>
+        <li>Voice assistant setups</li>
+      </ul>
+      <div class="btns"><a class="btn primary" href="mailto:mylarz@proton.me?subject=Project%20inquiry" target="_blank" rel="noopener">Email me</a><button class="btn" id="copy" type="button">Copy email</button></div>
+      <p class="note" id="note" aria-live="polite"></p>
+    </div>
+  </section>
+
+  <section id="contact" class="contact">
+    <h2>Contact</h2>
+    <p>Want to work together or just say hi? Reach out.</p>
+    <div class="links">
+      <a href="mailto:mylarz@proton.me">mylarz@proton.me</a>
+      <a href="https://github.com/Mylarz">GitHub</a>
+    </div>
+  </section>
+
+  <footer>© 2026 Mylarz</footer>
+<script>
+(function(){
+  var mail='mylarz@proton.me';
+  document.querySelectorAll('a[href^="#"]').forEach(function(a){
+    a.addEventListener('click',function(){setTimeout(function(){a.blur()},500)});
+  });
+  var btn=document.getElementById('copy'),note=document.getElementById('note');
+  btn.addEventListener('click',function(){
+    function done(ok){note.textContent=ok?'Copied '+mail:'Email: '+mail}
+    try{
+      if(navigator.clipboard&&navigator.clipboard.writeText){navigator.clipboard.writeText(mail).then(function(){done(true)},function(){done(false)});return}
+    }catch(e){}
+    try{
+      var t=document.createElement('textarea');t.value=mail;document.body.appendChild(t);t.select();
+      var ok=document.execCommand('copy');document.body.removeChild(t);done(ok)
+    }catch(e){done(false)}
+  });
+})();
+</script>
+</div>
+</body>
+</html>
